@@ -1,13 +1,13 @@
 # Multi-stage build for React frontend
-FROM node:18-alpine as build
+FROM node:24-alpine as build
 
 WORKDIR /app
 
 # Copy package files for client
-COPY client/package*.json ./
+COPY client/package.json client/package-lock.json ./
 
 # Install dependencies
-RUN npm ci
+RUN npm install
 
 # Copy client source code
 COPY client/ ./
